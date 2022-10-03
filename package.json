@@ -11,6 +11,7 @@
   "dependencies": {
     "@wdio/cli": "^7.23.0",
     "@wdio/sync": "^7.23.0",
+    "e2e-mailbox": "^1.1.1",
     "webdriverio": "^7.23.0"
   },
   "devDependencies": {
