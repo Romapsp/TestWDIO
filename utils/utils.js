@@ -8,8 +8,25 @@ const mailbox = new E2EMailbox();
     const passwordConfirm = password 
     return {emailAddress, password, passwordConfirm}
 }
+    class ConfirmationEmail {
+      async confirmEmail () {
+        const foundEmail = await mailbox.waitForEmail('Завершение регистрации', 5)
+        if (!foundEmail) {
+            return;
+          }
+        const urls = mailbox.extractLinksFromEmail(foundEmail);
+        const confirmUrl = urls.filter((url) => url.includes('https://profile.onliner.by/registration/'))[0];
+        if (!confirmUrl) {
+            return;
+          }
+        await browser.url(confirmUrl)
+        await browser.pause(10000)
+        console.log(await confirmUrl)
+    }
+    }
 
 
+module.exports = new ConfirmationEmail();
 module.exports = generateUserDataWithEmail;
 
 
