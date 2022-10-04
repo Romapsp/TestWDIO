@@ -5,13 +5,12 @@ const Link = require("../pageobjects/link.js")
 const MainPage = require("../pageobjects/mainpage.js");
 const SignUpPage = require("../pageobjects/signuppage.js");
 const Utils = require('../utils/utils')
-// const {generateUserDataWithEmail} = require('../utils/utils')
+const generateUserDataWithEmail = require('../utils/utils')
 
 describe("cases with Onliner", () => {
     it('signs up a new user', async() => {
         await MainPage.openSignUpPage()
         await SignUpPage.signUpBtn.click() 
-        await Utils.generateUserDataWithEmail()
         await SignUpPage.fillForm()
     })
 })
