@@ -8,8 +8,7 @@ const mailbox = new E2EMailbox();
     const passwordConfirm = password 
     return {emailAddress, password, passwordConfirm}
 }
-    class ConfirmationEmail {
-      async confirmEmail () {
+      async function confirmEmail () {
         const foundEmail = await mailbox.waitForEmail('Завершение регистрации', 5)
         if (!foundEmail) {
             return;
@@ -23,10 +22,8 @@ const mailbox = new E2EMailbox();
         await browser.pause(10000)
         console.log(await confirmUrl)
     }
-    }
 
 
-module.exports = new ConfirmationEmail();
-module.exports = generateUserDataWithEmail;
+module.exports = generateUserDataWithEmail, confirmEmail;
 
 
